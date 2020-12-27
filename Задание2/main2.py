@@ -47,7 +47,6 @@ class Sheep:
         print("count fuel compartments %d" % self.__fuel.fuel)
 
 
-
 class Builder:
     def attachEngine(self): pass
 
