@@ -7,30 +7,26 @@ class Director:
     def getShip(self):
         sheep = Sheep()
 
-        # First goes the body
         body = self.__builder.getBody()
         sheep.setBody(body)
 
-        # Then engine
         engine = self.__builder.getEngine()
         sheep.attachEngine(engine)
-
-        # And four wheels
 
         steps = self.__builder.getSteps()
         sheep.attachSteps(steps)
 
+        fuel = self.__builder.getFuel()
+        sheep.attachFuel(fuel)
 
         return sheep
 
 
-# The whole product
 class Sheep:
     def __init__(self):
         self.__engine = None
         self.__steps = None
         self.__fuel_compartments = None
-        self.__equipment = None
 
     def setBody(self, body):
         self.__body = body
@@ -41,13 +37,14 @@ class Sheep:
     def attachSteps(self, steps):
         self.__steps = steps
 
-    def setFuel_compartments(self, fuel_compartments):
-        self.__fuel_compartments = fuel_compartments
+    def attachFuel(self, fuel):
+        self.__fuel = fuel
 
     def specification(self):
         print("body: %s" % self.__body.shape)
         print("engine power: %d" % self.__engine.power)
         print("count steps: %d" % self.__steps.count)
+        print("count fuel compartments %d" % self.__fuel.fuel)
 
 
 
@@ -56,7 +53,7 @@ class Builder:
 
     def attachSteps(self): pass
 
-    def setFuel_compartments(self): pass
+    def attachFuel(self): pass
 
 
 class ShapeBuilder(Builder):
@@ -76,23 +73,26 @@ class ShapeBuilder(Builder):
         body.shape = "CosmosShape"
         return body
 
-    def getFuelcompartments(self):
-        fuel_compartments = FuelCompartments()
-        fuel_compartments.fuel = "5топлвныхотсеков"
-        return fuel_compartments
+    def getFuel(self):
+        fuel = Fuel()
+        fuel.fuel = 5
+        return fuel
 
 
 # Car parts
 class Engine:
     size = None
 
+
 class Steps:
     count = None
+
 
 class Body:
     shape = None
 
-class FuelCompartments:
+
+class Fuel:
     fuel = None
 
 
