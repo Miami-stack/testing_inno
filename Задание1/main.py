@@ -1,6 +1,5 @@
-import json
 from itertools import product
-from typing import Iterable, Dict, Optional, List, Any
+from typing import Any
 
 ex = {
     "атмосфера": ["кислородосодержащая", "отсутствует"],
