@@ -16,8 +16,7 @@ class TooMuchParametersException(Exception):
 
 
 def calculate(js):
-    tuples = [[(variable, value) for value in js[variable]] for variable in js]
-    answer = [dict(a) for a in product(*tuples)]
+    answer = [dict(zip(js.keys(), item)) for item in product(*js.values())]
     count = len(answer)
     print(count)
     if count > 100:
